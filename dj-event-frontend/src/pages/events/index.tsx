@@ -1,8 +1,8 @@
 import { Inter } from 'next/font/google'
 import Layout from '@/components/Layout'
-import EventItem from '@/components/EventItem';
+import EventItem from '@/components/EventItem'
 import { API_URL } from '@/configs'
-import { GetStaticProps } from 'next';
+import { GetStaticProps } from 'next'
 import type { Event } from '@/models/Event'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,11 +16,10 @@ export default function EventPage({ events }: PropsHome) {
     <Layout>
       <h1>Events</h1>
 
-      {events.length === 0  && <h3>No events to show</h3>}
-      {events.map(evt => (
-        <EventItem key={evt.id} evt={evt}/>
+      {events.length === 0 && <h3>No events to show</h3>}
+      {events.map((evt) => (
+        <EventItem key={evt.id} evt={evt} />
       ))}
-
     </Layout>
   )
 }

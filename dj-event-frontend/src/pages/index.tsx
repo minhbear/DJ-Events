@@ -1,15 +1,15 @@
-import { Inter } from "next/font/google";
-import Layout from "@/components/Layout";
-import EventItem from "@/components/EventItem";
-import { API_URL } from "@/configs";
-import { GetStaticProps } from "next";
-import type { Event } from "@/models/Event";
-import Link from "next/link";
+import { Inter } from 'next/font/google'
+import Layout from '@/components/Layout'
+import EventItem from '@/components/EventItem'
+import { API_URL } from '@/configs'
+import { GetStaticProps } from 'next'
+import type { Event } from '@/models/Event'
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 interface PropsHome {
-  events: Event[];
+  events: Event[]
 }
 
 export default function Home({ events }: PropsHome) {
@@ -28,17 +28,17 @@ export default function Home({ events }: PropsHome) {
         </Link>
       )}
     </Layout>
-  );
+  )
 }
 
 export const getStaticProps: GetStaticProps<{ events: Event[] }> = async () => {
-  const res = await fetch(`${API_URL}/api/events`);
-  const { data } = await res.json();
+  const res = await fetch(`${API_URL}/api/events`)
+  const { data } = await res.json()
 
   return {
     props: {
-      events: data.events,
+      events: data.events
     },
-    revalidate: 1,
-  };
-};
+    revalidate: 1
+  }
+}

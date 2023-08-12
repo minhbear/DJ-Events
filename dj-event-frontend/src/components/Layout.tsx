@@ -6,32 +6,28 @@ import Showcase from './Showcase'
 import styles from '@/styles/Layout.module.css'
 
 interface LayoutProps {
-  title: string,
-  keywords: string,
-  description: string,
+  title: string
+  keywords: string
+  description: string
   children: React.ReactNode
 }
 
 export default function Layout({ title, children, description, keywords }: LayoutProps) {
   const router = useRouter()
-  
+
   return (
     <div>
       <Head>
         <title>{title}</title>
-        <meta name='description' content={description} />
-        <meta name='keywords' content={keywords} />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
       </Head>
 
       <Header />
-    
-      {
-        router.pathname === '/' && <Showcase />
-      }
 
-      <div className={styles.container}>
-        {children}
-      </div>
+      {router.pathname === '/' && <Showcase />}
+
+      <div className={styles.container}>{children}</div>
       <Footer />
     </div>
   )

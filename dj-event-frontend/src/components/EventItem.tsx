@@ -1,7 +1,7 @@
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link'
+import Image from 'next/image'
 import styles from '@/styles/EventItem.module.css'
-import type { Event } from "@/models/Event"
+import type { Event } from '@/models/Event'
 
 interface PropsEventItem {
   evt: Event
@@ -13,12 +13,7 @@ export default function EventItem({ evt }: PropsEventItem) {
   return (
     <div className={styles.event}>
       <div className={styles.img}>
-        <Image
-          src={evt.image ?? DEFAULT_IMAGE}
-          width={170}
-          height={100}
-          alt={'Image of event'}
-        />
+        <Image src={evt.image ?? DEFAULT_IMAGE} width={170} height={100} alt={'Image of event'} />
       </div>
 
       <div className={styles.info}>
@@ -29,8 +24,8 @@ export default function EventItem({ evt }: PropsEventItem) {
       </div>
 
       <div className={styles.link}>
-        <Link href={`/events/${evt.slug}`} className='btn'>
-            Details
+        <Link href={`/events/${evt.slug}`} className="btn">
+          Details
         </Link>
       </div>
     </div>

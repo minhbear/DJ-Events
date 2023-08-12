@@ -5,11 +5,13 @@ import styles from '../styles/404.module.css'
 
 function NotFoundPage() {
   return (
-    <Layout title='Page not found'>
+    <Layout title="Page not found">
       <div className={styles.error}>
-        <h1><FaExclamationTriangle /> 404</h1>
+        <h1>
+          <FaExclamationTriangle /> 404
+        </h1>
         <h4>Sorry, there is not thing here</h4>
-        <Link href='/'>Go Back</Link>
+        <Link href="/">Go Back</Link>
       </div>
     </Layout>
   )

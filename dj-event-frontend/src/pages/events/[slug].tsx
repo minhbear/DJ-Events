@@ -1,12 +1,12 @@
-import Layout from "@/components/Layout"
-import Image from "next/image"
+import Layout from '@/components/Layout'
+import Image from 'next/image'
 import { FaPencilAlt, FaTimes } from 'react-icons/fa'
-import { GetStaticPaths, GetStaticProps } from "next"
-import type { Event } from "@/models/Event"
-import { API_URL } from "@/configs"
-import { ParsedUrlQuery } from "querystring"
+import { GetStaticPaths, GetStaticProps } from 'next'
+import type { Event } from '@/models/Event'
+import { API_URL } from '@/configs'
+import { ParsedUrlQuery } from 'querystring'
 import styles from '@/styles/Event.module.css'
-import Link from "next/link"
+import Link from 'next/link'
 
 interface PropsEventPage {
   event: Event
@@ -24,11 +24,7 @@ export default function EventPage({ event }: PropsEventPage) {
           <Link href={`/events/edit/${event.id}`}>
             <FaPencilAlt /> Edit Event
           </Link>
-          <a
-            href="#"
-            className={styles.delete}
-            onClick={deleteEvent}
-          >
+          <a href="#" className={styles.delete} onClick={deleteEvent}>
             <FaTimes /> Delete Event
           </a>
         </div>
@@ -50,7 +46,7 @@ export default function EventPage({ event }: PropsEventPage) {
         <h3>Venue: {event.venue}</h3>
         <p>{event.address}</p>
 
-        <Link href='/events' className={styles.back}>
+        <Link href="/events" className={styles.back}>
           {'<'} Go Back
         </Link>
       </div>
@@ -66,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`${API_URL}/api/events`)
   const events = (await res.json()).data.events as Event[]
 
-  const paths = events.map(evt => ({
+  const paths = events.map((evt) => ({
     params: {
       slug: evt.slug
     } as ParsedUrlQueryWithSlug
@@ -79,7 +75,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<{ event: Event }> = async ({ params }) => {
-
   const slug = (params as ParsedUrlQueryWithSlug).slug
 
   const res = await fetch(`${API_URL}/api/events/${slug}`)
