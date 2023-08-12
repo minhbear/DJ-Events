@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
+      "@/models/*": ["./src/models/*"],
       "@/config/*": ["./src/config/*"],
       "@/*": ["./src/*"]
     }
